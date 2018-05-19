@@ -28,7 +28,6 @@ switch ($action) {
                 'login_status' => 'success',
                 'user_id' => $row['id'],
                 'faculty_id' => $row['faculty_id'],
-                'course_id' => $row['course_id'],
                 'batch_id' => $row['batch_id']
             );
         } else {
@@ -43,11 +42,11 @@ switch ($action) {
 
     case 'vote_sheet':
         $faculty_id = $_GET['faculty_id'];
-        $course_id = $_GET['course_id'];
+//        $course_id = $_GET['course_id'];
         $batch_id = $_GET['batch_id'];
         //Generating a list of candidates so one can vote
         $query_vote_sheet = "SELECT c.id AS candId, first_name, last_name, position_name, 
-                                    c.faculty_id, c.course_id, c.batch_id, COUNT(IFNULL(candidate_id, 0)) AS num_votes
+                                    c.faculty_id, c.batch_id, COUNT(v.user_id) AS num_votes
                                FROM candidates c
                          INNER JOIN positions p
                                  ON p.id = c.position_id
@@ -56,7 +55,6 @@ switch ($action) {
                           LEFT JOIN votes v
                                  ON v.candidate_id = c.id
                               WHERE (c.faculty_id = {$faculty_id} OR c.faculty_id IS NULL)
-                                AND (c.course_id = {$course_id} OR c.course_id IS NULL)
                                 AND (c.batch_id = {$batch_id} OR c.batch_id IS NULL)
                            GROUP BY c.id";
 
@@ -69,8 +67,6 @@ switch ($action) {
                 "num_votes" => $row["num_votes"]
             );
         }
-        
-        
 
         echo json_encode($candidates); // Creating json response for voting sheet
         break;
