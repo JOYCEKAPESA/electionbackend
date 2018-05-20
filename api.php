@@ -44,6 +44,8 @@ switch ($action) {
         $faculty_id = $_GET['faculty_id'];
 //        $course_id = $_GET['course_id'];
         $batch_id = $_GET['batch_id'];
+        $user_id = $_GET['user_id'];
+
         //Generating a list of candidates so one can vote
         $query_vote_sheet = "SELECT c.id AS candId, first_name, last_name, position_name, 
                                     c.faculty_id, c.batch_id, COUNT(v.user_id) AS num_votes
@@ -60,6 +62,22 @@ switch ($action) {
 
         $result_vote_sheet = mysqli_query($link, $query_vote_sheet) or die(mysqli_error($link));
 
+        //Check if a user has voted
+        $query_user_vote = "SELECT v.user_id
+                              FROM votes v
+                             WHERE v.user_id = {$user_id}
+                             LIMIT 1";
+
+        $result_user_vote = mysqli_query($link, $query_user_vote) or die(mysqli_error($link));
+
+        $user_has_voted;
+        if (mysqli_num_rows($result_user_vote) == 1) {
+            $user_has_voted = TRUE;
+        } else {
+            $user_has_voted = FALSE;
+        }
+
+
         while ($row = mysqli_fetch_array($result_vote_sheet)) {
             $candidates[$row['position_name']][] = array(
                 "full_name" => $row['first_name'] . " " . $row['last_name'],
@@ -68,7 +86,12 @@ switch ($action) {
             );
         }
 
-        echo json_encode($candidates); // Creating json response for voting sheet
+        $vote_sheet = array(
+            "candidates" => $candidates,
+            "user_has_voted" => $user_has_voted
+        );
+
+        echo json_encode($vote_sheet); // Creating json response for voting sheet
         break;
 
     case 'cast_votes':
