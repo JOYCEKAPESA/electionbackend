@@ -41,7 +41,6 @@ and open the template in the editor.
             </div>
         </form>
 
-
         <script src="js/material.js" type="text/javascript"></script>
         <script src="js/jquery-3.3.1.js" type="text/javascript"></script>
         <script src="js/functions.js" type="text/javascript"></script>
