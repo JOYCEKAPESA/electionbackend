@@ -51,7 +51,7 @@ switch ($action) {
                                     c.faculty_id, c.batch_id, COUNT(v.user_id) AS num_votes
                                FROM candidates c
                          INNER JOIN positions p
-                                 ON p.id = c.position_id
+                                  ON p.id = c.position_id
                          INNER JOIN students s 
                                  ON s.id = c.student_id
                           LEFT JOIN votes v
