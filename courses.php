@@ -31,14 +31,11 @@ $result_select_courses = mysqli_query($link, $query_select_courses) or dir(mysql
             <main class="mdl-layout__content">
                 <div class="page-content"><!-- Your content goes here -->
                     <div class="page-wrapper">
-
-                        <div class="actions">
+                     <div class="actions">
                             <a href="add_course.php">
                                 <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"> Add course </button>
                             </a>
                         </div>
-
-
                         <table class="mdl-data-table mdl-js-data-table mdl-shadow--2dp full-width">
                             <thead>
                                 <tr>
@@ -57,8 +54,8 @@ $result_select_courses = mysqli_query($link, $query_select_courses) or dir(mysql
                                         <td class="mdl-data-table__cell--non-numeric"><?php echo $row['faculty_name'] ?></td>
                                         <td><?php echo $row['years_to_complete'] ?></td>
                                         <td>
-                                            <a href="edit_course.php?id=<?php echo $row['id'] ?>">
-                                                <button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button>
+                                            <a href="view_course.php?id=<?php echo $row['id'] ?>">
+                                                <button class="mdl-button mdl-js-button mdl-js-ripple-effect">View</button>
                                             </a>
                                             <a href="delete_course.php?id=<?php echo $row['id'] ?>">
                                                 <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">Delete</button>

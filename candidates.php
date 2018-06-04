@@ -87,7 +87,7 @@ $result_select_fr = mysqli_query($link, $query_select_fr) or dir(mysqli_error($l
                                             <p class="full-name"><img src="images/president.jpg" width="44"  class="avatar"/><?php echo $row['first_name'] . " " . $row['last_name'] ?></p></td>
                                         <!--<td>25</td>-->
                                         <td>
-                                            <a href="edit_candidate.php?id=<?php echo $row['id'] ?>">
+                                            <a href="view_candidates.php?id=<?php echo $row['id'] ?>">
                                                 <button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button>
                                             </a>
                                             <a href="delete_candidate.php?id=<?php echo $row['id'] ?>">

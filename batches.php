@@ -56,8 +56,8 @@ $result_select_batches = mysqli_query($link, $query_select_batches) or dir(mysql
                                         <td class="mdl-data-table__cell--non-numeric"><?php echo $row['course_name'] ?></td>
                                         <!--<td>25</td>-->
                                         <td>
-                                            <a href="edit_batch.php?id=<?php echo $row['id'] ?>">
-                                                <button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button>
+                                            <a href="view_batches.php?id=<?php echo $row['id'] ?>">
+                                                <button class="mdl-button mdl-js-button mdl-js-ripple-effect">View</button>
                                             </a>
                                             <a href="delete_batch.php?id=<?php echo $row['id'] ?>">
                                                 <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">Delete</button>

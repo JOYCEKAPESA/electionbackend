@@ -91,3 +91,7 @@ body {
     line-height: 44px;
     margin-bottom: 0px;
 }
+
+.vote-counts {
+    float: right;
+}

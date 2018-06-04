@@ -58,7 +58,8 @@ switch ($action) {
                                  ON v.candidate_id = c.id
                               WHERE (c.faculty_id = {$faculty_id} OR c.faculty_id IS NULL)
                                 AND (c.batch_id = {$batch_id} OR c.batch_id IS NULL)
-                           GROUP BY c.id";
+                           GROUP BY c.id
+                              ORDER BY p.id, first_name ASC";
 
         $result_vote_sheet = mysqli_query($link, $query_vote_sheet) or die(mysqli_error($link));
 
@@ -70,19 +71,48 @@ switch ($action) {
 
         $result_user_vote = mysqli_query($link, $query_user_vote) or die(mysqli_error($link));
 
-        $user_has_voted;
+        //Count position votes
+        $query_count_votes = "SELECT p.position_name, COUNT(v.user_id) AS total_votes
+                               FROM candidates c
+                         INNER JOIN positions p
+                                  ON p.id = c.position_id
+                         INNER JOIN students s 
+                                 ON s.id = c.student_id
+                          LEFT JOIN votes v
+                                 ON v.candidate_id = c.id
+                              WHERE (c.faculty_id = {$faculty_id} OR c.faculty_id IS NULL)
+                                AND (c.batch_id = {$batch_id} OR c.batch_id IS NULL)
+                           GROUP BY p.id
+                              ORDER BY p.id, first_name ASC";
+
+        $result_count_vetes = mysqli_query($link, $query_count_votes) or die(mysqli_error($link));
+
+        while ($row = mysqli_fetch_array($result_count_vetes)) {
+            $position_total_votes[$row['position_name']] = $row['total_votes'];
+        }
+
         if (mysqli_num_rows($result_user_vote) == 1) {
             $user_has_voted = TRUE;
         } else {
             $user_has_voted = FALSE;
         }
 
-
+//        $winner = 0;
         while ($row = mysqli_fetch_array($result_vote_sheet)) {
+
+//
+//            if ($row['num_votes'] > $winner) {
+//                $winner = $row['num_votes'];
+//                $winner_cand[$row["candId"]] = "WINNER";
+//            } else {
+//                $winner_cand[$row["candId"]] = "";
+//            }
+
             $candidates[$row['position_name']][] = array(
                 "full_name" => $row['first_name'] . " " . $row['last_name'],
                 "candidate_id" => $row["candId"],
-                "num_votes" => $row["num_votes"]
+                "num_votes" => $row["num_votes"],
+                "total_votes" => $position_total_votes[$row['position_name']]
             );
         }
 

@@ -51,8 +51,8 @@ $result_select_faculty = mysqli_query($link, $query_select_faculty) or dir(mysql
                                         <td class="mdl-data-table__cell--non-numeric"><?php echo $row['faculty_name'] ?></td>
                                         <!--<td>25</td>-->
                                         <td>
-                                            <a href="edit_faculty.php?id=<?php echo $row['id'] ?>">
-                                                <button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button>
+                                            <a href="view_faculty.php?id=<?php echo $row['id'] ?>">
+                                                <button class="mdl-button mdl-js-button mdl-js-ripple-effect">View</button>
                                             </a>
                                             <a href="delete_faculty.php?id=<?php echo $row['id'] ?>">
                                                 <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">Delete</button>
