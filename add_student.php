@@ -66,10 +66,14 @@
                                     <br/>
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
                                         <select class="mdl-textfield__input" id="course" name="course">
-
-                                       
                                         </select>
                                         <label class="mdl-textfield__label" for="course">Course</label>
+                                    </div>
+                                    <br/>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <select class="mdl-textfield__input" id="batch" name="batch">
+                                        </select>
+                                        <label class="mdl-textfield__label" for="course">Batch</label>
                                     </div>
 
                                 </div>
