@@ -9,7 +9,7 @@ $faculty = mysqli_real_escape_string($link, $_POST['faculty']);
 $course = mysqli_real_escape_string($link, $_POST['course']);
 $batch = mysqli_real_escape_string($link, $_POST['batch']);
 
-$hashed_password = sha1("123456");
+$hashed_password = sha1("123456"); //default student password
 $query_user = "INSERT INTO users (username, password) VALUES ('$reg_number', '$hashed_password')";
 $result_user = mysqli_query($link, $query_user) or die(mysqli_error($link));
 
