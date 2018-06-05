@@ -4,7 +4,7 @@ include './config/database.php';
 $id = $_GET['id'];
 
 $query_select_batches = "SELECT id, batch_name, course_id FROM batches WHERE id = {$id}";
-$result_select_batches = mysqli_query($link, $query_select_batches) or dir(mysqli_error($link));
+$result_select_batches = mysqli_query($link, $query_select_batches) or die(mysqli_error($link));
 $row = mysqli_fetch_array($result_select_batches);
 ?>
 <html>

@@ -4,7 +4,7 @@ include './config/database.php';
 $id = $_GET['id'];
 
 $query_select_faculty = "SELECT id, faculty_name FROM faculties WHERE id = {$id}";
-$result_select_faculty = mysqli_query($link, $query_select_faculty) or dir(mysqli_error($link));
+$result_select_faculty = mysqli_query($link, $query_select_faculty) or die(mysqli_error($link));
 $row = mysqli_fetch_array($result_select_faculty);
 ?>
 <html>

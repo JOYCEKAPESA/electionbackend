@@ -4,7 +4,7 @@ include './config/database.php';
 $id = $_GET['id'];
 
 $query_select_course = "SELECT id, course_name, years_to_complete, faculty_id FROM courses WHERE id = {$id}";
-$result_select_corese = mysqli_query($link, $query_select_course) or dir(mysqli_error($link));
+$result_select_corese = mysqli_query($link, $query_select_course) or die(mysqli_error($link));
 $row = mysqli_fetch_array($result_select_corese);
 ?>
 <html>

@@ -10,7 +10,7 @@ $result_select_batches = mysqli_query($link, $query_select_batches) or dir(mysql
 ?>
 <html>
     <head>
-        <title>Users</title>
+        <title>Batches</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/material.css" rel="stylesheet" type="text/css"/>

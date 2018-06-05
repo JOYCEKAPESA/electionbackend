@@ -4,7 +4,7 @@ include './config/database.php';
 $id = $_GET['id'];
 
 $query_select_candidate = "SELECT id, election_period_id, position_id, student_id, faculty_id, batch_id FROM candidates WHERE id = {$id}";
-$result_select_candidate = mysqli_query($link, $query_select_candidate) or dir(mysqli_error($link));
+$result_select_candidate = mysqli_query($link, $query_select_candidate) or die(mysqli_error($link));
 $row = mysqli_fetch_array($result_select_candidate);
 ?>
 <html>

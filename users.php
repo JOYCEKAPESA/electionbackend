@@ -31,7 +31,7 @@ $result_select_users = mysqli_query($link, $query_select_users) or dir(mysqli_er
 
                         <div class="actions">
                             <a href="add_user.php">
-                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"> Add user </button>
+                                <button class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored"> Add Admin user </button>
                             </a>
                         </div>
 
@@ -51,9 +51,7 @@ $result_select_users = mysqli_query($link, $query_select_users) or dir(mysqli_er
                                         <td class="mdl-data-table__cell--non-numeric"><?php echo $row['username'] ?></td>
                                         <!--<td>25</td>-->
                                         <td>
-                                            <a href="view_user.php?user_id=<?php echo $row['id'] ?>">
-                                                <button class="mdl-button mdl-js-button mdl-js-ripple-effect">View</button>
-                                            </a>
+                                            
                                             <a href="delete_user.php?user_id=<?php echo $row['id'] ?>">
                                                 <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">Delete</button>
                                             </a>
