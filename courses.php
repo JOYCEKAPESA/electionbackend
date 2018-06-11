@@ -55,7 +55,7 @@ $result_select_courses = mysqli_query($link, $query_select_courses) or dir(mysql
                                         <td><?php echo $row['years_to_complete'] ?></td>
                                         <td>
                                             <a href="view_course.php?id=<?php echo $row['id'] ?>">
-                                                <button class="mdl-button mdl-js-button mdl-js-ripple-effect">View</button>
+                                                <button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button>
                                             </a>
                                             <a href="delete_course.php?id=<?php echo $row['id'] ?>">
                                                 <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">Delete</button>

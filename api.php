@@ -11,13 +11,18 @@ switch ($action) {
         @$username = $_GET['username']; //Get username from url (Don't trust user inputs security will be implemented later)
         @$password = $_GET['password']; //Get password from url
         $hashedPassword = sha1($password);
-
-        $query_authenticate = "SELECT u.id, faculty_id, course_id, batch_id, username, password, is_first_time_login
+        
+ 
+        $query_authenticate = "SELECT u.id, s.faculty_id, course_id, batch_id, username,
+            password, is_first_time_login, years_to_complete, TIMESTAMPDIFF(YEAR, admission_date, CURRENT_TIMESTAMP()) AS diff
                          FROM users u
                    INNER JOIN students s
                            ON u.id = s.user_id
+                   INNER JOIN courses c
+                           ON c.id = s.course_id
                         WHERE username = '{$username}'
                           AND password = '{$hashedPassword}'
+                          AND TIMESTAMPDIFF(YEAR, admission_date, CURRENT_TIMESTAMP()) < years_to_complete 
                          LIMIT 1";
 
         $query_result_authenticate = mysqli_query($link, $query_authenticate) or die(mysqli_error($link));

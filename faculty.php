@@ -52,7 +52,7 @@ $result_select_faculty = mysqli_query($link, $query_select_faculty) or dir(mysql
                                         <!--<td>25</td>-->
                                         <td>
                                             <a href="view_faculty.php?id=<?php echo $row['id'] ?>">
-                                                <button class="mdl-button mdl-js-button mdl-js-ripple-effect">View</button>
+                                                <button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button>
                                             </a>
                                             <a href="delete_faculty.php?id=<?php echo $row['id'] ?>">
                                                 <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">Delete</button>

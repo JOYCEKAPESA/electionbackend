@@ -66,7 +66,7 @@ $result_select_students = mysqli_query($link, $query_select_students) or dir(mys
                                         <!--<td>25</td>-->
                                         <td>
                                             <a href="view_students.php?student_id=<?php echo $row['id'] ?>">
-                                                <button class="mdl-button mdl-js-button mdl-js-ripple-effect">View</button>
+                                                <button class="mdl-button mdl-js-button mdl-js-ripple-effect">Edit</button>
                                             </a>
                                             <a href="delete_student.php?student_id=<?php echo $row['id'] ?>">
                                                 <button class="mdl-button mdl-js-button mdl-js-ripple-effect mdl-button--accent">Delete</button>

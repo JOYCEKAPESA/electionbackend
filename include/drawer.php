@@ -8,7 +8,7 @@
         <a class="mdl-navigation__link" href="courses.php">Courses</a>
         <a class="mdl-navigation__link" href="batches.php">Batches</a>
         <a class="mdl-navigation__link" href="candidates.php">Candidates</a>
-        <a class="mdl-navigation__link" href="">Settings</a>
+        <a class="mdl-navigation__link" href="settings.php">Settings</a>
     </nav>
 </div>
 

@@ -1,7 +1,14 @@
 <!DOCTYPE html>
+<?php
+include './config/database.php';
+
+$query_election_period = "SELECT id, `period`, start_time, end_time FROM election_period";
+$result_election_period = mysqli_query($link, $query_election_period) or dir(mysqli_error($link));
+$row = mysqli_fetch_array($result_election_period);
+?>
 <html>
     <head>
-        <title>Batches</title>
+        <title>Settings</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="css/material.css" rel="stylesheet" type="text/css"/>
@@ -22,37 +29,30 @@
             <main class="mdl-layout__content">
                 <div class="page-content"><!-- Your content goes here -->
                     <div class="page-wrapper">
-                        <form action="add_new_batches.php" method="POST">
+
+                        <form action="add_new_vote_period.php" method="POST">
+                            
+                            <input type="hidden" value="<?php echo $row['id']?>" name="id"/>
 
                             <div class="demo-card-square mdl-card mdl-shadow--2dp full-width">
                                 <div class="mdl-card__title">
-                                    <h2 class="mdl-card__title-text">Add batches</h2>
+                                    <h2 class="mdl-card__title-text">Vote period</h2>
                                 </div>
                                 <div class="mdl-card__supporting-text">
 
                                     <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-
-                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                            <select class="mdl-textfield__input" id="course" name="course">
-                                                <?php
-                                                include './config/database.php';
-                                                $result_course = mysqli_query($link, "SELECT * FROM courses") or die(mysqli_error($link));
-                                                while ($row = mysqli_fetch_array($result_course)) {
-                                                    ?>
-                                                    <option value="<?php echo $row['id'] ?>"><?php echo $row['course_name'] ?></option>
-                                                    <?php
-                                                }
-                                                ?>
-                                            </select>
-                                            <label class="mdl-textfield__label" for="course">Course</label>
-                                        </div>
-                                        
-                                        <br/>
-                                        
-                                        <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
-                                            <input class="mdl-textfield__input" name="batch_name" type="int" id="sample4">
-                                            <label class="mdl-textfield__label" for="sample4">Batch name</label>
-                                        </div>
+                                        <input class="mdl-textfield__input" name="period" value="<?php echo $row['period'] ?>" type="text" id="sample3">
+                                        <label class="mdl-textfield__label" for="sample3">Period</label>
+                                    </div>
+                                    <br/>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" name="start_time" value="<?php echo $row['start_time'] ?>" type="text" id="sample3">
+                                        <label class="mdl-textfield__label" for="sample3">Start time</label>
+                                    </div>
+                                    <br/>
+                                    <div class="mdl-textfield mdl-js-textfield mdl-textfield--floating-label">
+                                        <input class="mdl-textfield__input" name="end_time" value="<?php echo $row['end_time'] ?>" type="text" id="sample3">
+                                        <label class="mdl-textfield__label" for="sample3">End time</label>
                                     </div>
 
                                 </div>
