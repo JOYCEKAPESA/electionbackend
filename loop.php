@@ -1,4 +1,4 @@
 <?php
 
-echo sha1('student18');
+echo sha1('MOKOKI');
 ?>

@@ -1,7 +1,9 @@
 <?php
 
-$x=3;
-$y=4;
-echo $x + $y;
+$i=0;
+while($i<8){
+    $i++;
+echo $i."</br>";
+}
 ?>
 

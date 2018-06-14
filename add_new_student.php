@@ -1,7 +1,6 @@
 <?php
 
 include './config/database.php';
-
 $reg_number = mysqli_real_escape_string($link, $_POST['registration_no']);
 $first_name = mysqli_real_escape_string($link, $_POST['first_name']);
 $last_name = mysqli_real_escape_string($link, $_POST['last_name']);
@@ -9,7 +8,7 @@ $faculty = mysqli_real_escape_string($link, $_POST['faculty']);
 $course = mysqli_real_escape_string($link, $_POST['course']);
 $batch = mysqli_real_escape_string($link, $_POST['batch']);
 
-$hashed_password = sha1("123456"); //default student password
+$hashed_password = sha1("last_name"); //default student password
 $query_user = "INSERT INTO users (username, password) VALUES ('$reg_number', '$hashed_password')";
 $result_user = mysqli_query($link, $query_user) or die(mysqli_error($link));
 

@@ -51,7 +51,6 @@ switch ($action) {
 
     case 'vote_sheet':
         $faculty_id = $_GET['faculty_id'];
-//        $course_id = $_GET['course_id'];
         $batch_id = $_GET['batch_id'];
         $user_id = $_GET['user_id'];
 
@@ -122,12 +121,6 @@ switch ($action) {
         while ($row = mysqli_fetch_array($result_vote_sheet)) {
 
 //
-//            if ($row['num_votes'] > $winner) {
-//                $winner = $row['num_votes'];
-//                $winner_cand[$row["candId"]] = "WINNER";
-//            } else {
-//                $winner_cand[$row["candId"]] = "";
-//            }
 
             $candidates[$row['position_name']][] = array(
                 "full_name" => $row['first_name'] . " " . $row['last_name'],
@@ -156,8 +149,8 @@ switch ($action) {
         $user_id = $_GET['user_id'];
 //        print_r($_GET);
 
-        foreach ($_GET['votes'] as $candidate_id) { //since number of votes which can be casted is dynamic so we have to loop na hizo id za candidates tunazipata kwenye hiyo for loop
-//            if ($candidate_id !== 'cast_votes'  && $candidate_id !== $user_id) {
+        foreach ($_GET['votes'] as $candidate_id) { 
+
             //Get position id from provided candidate id
             $query_get_candidate = "SELECT position_id
                                           FROM candidates
